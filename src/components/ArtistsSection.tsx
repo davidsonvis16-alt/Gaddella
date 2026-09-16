@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import ArrowLink from "./ArrowLink";
 import DisplayLines from "./DisplayLines";
 import { Reveal, RevealGroup, RevealItem } from "./Reveal";
-import { ARTISTS } from "../data/artists";
+import { ARTIST } from "../data/artists";
 import styles from "./ArtistsSection.module.css";
 
 export default function ArtistsSection() {
@@ -12,32 +11,31 @@ export default function ArtistsSection() {
         <div className={styles.content}>
           <div className={styles.copy}>
             <Reveal as="p" className={["label", styles.eyebrow].join(" ")} distance={14}>
-              Our artists
+              The artist
             </Reveal>
 
             <DisplayLines
-              lines={["Skilled hands.", "Different visions."]}
+              lines={["One artist.", "Every piece."]}
               as="h2"
               className={styles.heading}
             />
 
             <Reveal as="p" className={["body-text", styles.body].join(" ")} delay={0.1}>
-              Our artists bring unique styles and perspectives, but share the same commitment to quality, safety and
-              authenticity.
+              {ARTIST.name} handles every tattoo and piercing in the studio — from the first conversation to the
+              aftercare.
             </Reveal>
 
             <Reveal className={styles.cta} delay={0.18}>
-              <ArrowLink to="/artists">Meet the artists</ArrowLink>
+              <ArrowLink to="/artist">Meet {ARTIST.name}</ArrowLink>
             </Reveal>
           </div>
 
           <RevealGroup as="ul" className={styles.list} each={0.08}>
-            {ARTISTS.map((artist) => (
-              <RevealItem as="li" key={artist.id} className={styles.listItem}>
-                <Link to={`/artists#${artist.id}`} className={styles.listLink}>
-                  <span className={styles.name}>{artist.short}</span>
-                  <span className={styles.specialty}>{artist.specialties.join(" / ")}</span>
-                </Link>
+            {ARTIST.specialties.map((s) => (
+              <RevealItem as="li" key={s} className={styles.listItem}>
+                <span className={styles.listLink}>
+                  <span className={styles.name}>{s}</span>
+                </span>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -45,7 +43,7 @@ export default function ArtistsSection() {
       </div>
 
       <h2 id="artists-heading" className="visually-hidden">
-        Our artists
+        The artist
       </h2>
     </section>
   );

@@ -29,7 +29,7 @@ export default function BookingCTA() {
         <DisplayLines lines={["Ready for", "your next piece?"]} as="h2" className={styles.heading} />
 
         <Reveal as="p" className={["body-text", styles.body].join(" ")} delay={0.1}>
-          Tell us what you're imagining. We'll help shape the idea, choose the right artist and plan your session.
+          Tell us what you're imagining. We'll help shape the idea and plan your session.
         </Reveal>
 
         <Reveal className={styles.cta} delay={0.18}>

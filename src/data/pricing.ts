@@ -1,7 +1,8 @@
 /* ==========================================================================
-   GADELLAA ARTS TATTOO STUDIO — price list
+   GADELLAA ARTS TATTOO STUDIO — price lists
    --------------------------------------------------------------------------
-   Copied from the studio's printed price list. Prices are in Kenyan shillings.
+   Copied from the studio's printed tattoo and body piercing price lists.
+   Prices are in Kenyan shillings.
    `from: true` means the figure is a starting price.
    ========================================================================== */
 
@@ -19,7 +20,7 @@ export type PriceGroup = {
   items: PriceItem[];
 };
 
-export const PRICE_GROUPS: PriceGroup[] = [
+export const TATTOO_PRICES: PriceGroup[] = [
   {
     id: "mini",
     title: "Mini tattoos",
@@ -64,6 +65,61 @@ export const PRICE_GROUPS: PriceGroup[] = [
       { service: "Cover-up tattoos", price: 2000, from: true },
       { service: "Portrait tattoos", price: 8000, from: true },
       { service: "Custom designs", note: "Priced on size and detail" },
+    ],
+  },
+];
+
+export const PIERCING_PRICES: PriceGroup[] = [
+  {
+    id: "ear",
+    title: "Ear piercings",
+    items: [
+      { service: "Lobe", price: 300 },
+      { service: "Double lobe", price: 600 },
+      { service: "Helix", price: 500 },
+      { service: "Tragus", price: 800 },
+      { service: "Conch", price: 800 },
+      { service: "Daith", price: 800 },
+      { service: "Rook", price: 800 },
+      { service: "Industrial", price: 800 },
+    ],
+  },
+  {
+    id: "facial",
+    title: "Facial piercings",
+    items: [
+      { service: "Eyebrow", price: 800 },
+      { service: "Labret", price: 1000 },
+      { service: "Medusa", price: 1000 },
+      { service: "Monroe", price: 1000 },
+      { service: "Smiley", price: 500 },
+      { service: "Tongue", price: 1000 },
+    ],
+  },
+  {
+    id: "nose",
+    title: "Nose piercings",
+    items: [
+      { service: "Nostril", price: 500 },
+      { service: "Double nostril", price: 1000 },
+      { service: "Septum", price: 800 },
+    ],
+  },
+  {
+    id: "body",
+    title: "Body piercings",
+    items: [
+      { service: "Navel / belly", price: 1000 },
+      { service: "Nipple", price: 1500 },
+      { service: "Dermal", price: 4000, from: true },
+    ],
+  },
+  {
+    id: "jewellery",
+    title: "Jewellery",
+    items: [
+      { service: "Jewellery change", price: 500 },
+      { service: "Premium jewellery", note: "Price varies" },
     ],
   },
 ];

@@ -15,8 +15,6 @@ export type Work = {
   id: string;
   title: string;
   style: Style;
-  /** Artist id from data/artists.ts, when the piece is credited to one artist. */
-  artistId?: string;
   placement: string;
   description: string;
   imageId: ImageId;

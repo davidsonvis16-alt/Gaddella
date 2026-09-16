@@ -2,6 +2,12 @@
   border-top: 1px solid var(--line-soft);
 }
 
+.heading {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
 .groups {
   display: grid;
   gap: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 4rem);
@@ -52,9 +58,9 @@
   color: var(--fg-faint);
 }
 
-/* ---- colour surcharge -------------------------------------------------- */
+/* ---- callouts (colour surcharge, jewellery) ---------------------------- */
 
-.colour {
+.callout {
   display: grid;
   gap: 0.5rem;
   margin-top: clamp(3rem, 7vw, 5.5rem);
@@ -63,17 +69,17 @@
   border-bottom: 1px solid var(--line);
 }
 
-.colourLabel {
+.calloutLabel {
   color: var(--fg-faint);
 }
 
-.colourPrice {
+.calloutPrice {
   font-size: var(--fs-h2);
   text-transform: uppercase;
   line-height: var(--lh-tight);
 }
 
-.colourNote {
+.calloutNote {
   font-size: var(--fs-small);
   color: var(--fg-dim);
 }

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -35,7 +35,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/work" element={<Work />} />
               <Route path="/prices" element={<Prices />} />
-              <Route path="/artists" element={<Artists />} />
+              <Route path="/artist" element={<Artists />} />
+              <Route path="/artists" element={<Navigate to="/artist" replace />} />
               <Route path="/studio" element={<Studio />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="*" element={<NotFound />} />

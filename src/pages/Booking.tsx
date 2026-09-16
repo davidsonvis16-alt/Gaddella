@@ -2,7 +2,6 @@ import { useRef, useState, type FormEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import ArrowLink from "../components/ArrowLink";
 import PageShell from "../components/PageShell";
-import { ARTISTS } from "../data/artists";
 import { STYLES } from "../data/works";
 import { SITE } from "../data/site";
 import { EASE } from "../lib/motion";
@@ -13,7 +12,7 @@ type Fields = {
   name: string;
   email: string;
   phone: string;
-  artist: string;
+  service: string;
   style: string;
   placement: string;
   size: string;
@@ -28,7 +27,7 @@ const EMPTY: Fields = {
   name: "",
   email: "",
   phone: "",
-  artist: "No preference",
+  service: "Tattoo",
   style: "",
   placement: "",
   size: "",
@@ -46,7 +45,7 @@ function validate(f: Fields): Errors {
   if (!f.email.trim()) e.email = "We need an email address to reply to.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = "That email address doesn't look right.";
   if (!f.idea.trim()) e.idea = "Describe the idea, even roughly.";
-  else if (f.idea.trim().length < 12) e.idea = "A little more detail helps us match you to an artist.";
+  else if (f.idea.trim().length < 12) e.idea = "A little more detail helps us plan your session.";
   if (!f.consent) e.consent = "We need your consent before we can hold your details.";
   return e;
 }
@@ -65,7 +64,7 @@ export default function Booking() {
     title: "Book a session",
     path: "/booking",
     description:
-      "Request a tattoo session at GADELLAA ARTS TATTOO STUDIO in Nyeri, Kenya. Tell us the idea, the placement and the artist you'd like to work with.",
+      "Request a tattoo session at GADELLAA ARTS TATTOO STUDIO in Nyeri, Kenya. Tattoos and body piercing — tell us the idea and the placement.",
   });
 
   const set = <K extends keyof Fields>(key: K, value: Fields[K]) => {
@@ -97,7 +96,7 @@ export default function Booking() {
       `Name:               ${f.name}`,
       `Email:              ${f.email}`,
       `Phone:              ${f.phone || "—"}`,
-      `Preferred artist:   ${f.artist}`,
+      `Service:            ${f.service}`,
       `Style:              ${f.style || "Not sure yet"}`,
       `Placement:          ${f.placement || "—"}`,
       `Approximate size:   ${f.size || "—"}`,
@@ -155,7 +154,7 @@ export default function Booking() {
     <PageShell
       eyebrow="Booking"
       lines={["Ready for", "your next piece?"]}
-      intro="Tell us what you're imagining. We'll help shape the idea, choose the right artist and plan your session. Consultations are free."
+      intro="Tell us what you're imagining. We'll help shape the idea, and plan your session. Consultations are free."
     >
       <section className={["section", "theme-light", styles.section].join(" ")} aria-label="Booking request">
         <div className={["shell", styles.grid].join(" ")}>
@@ -231,11 +230,11 @@ export default function Booking() {
                       hint="Optional"
                     />
                     <Select
-                      label="Preferred artist"
-                      name="artist"
-                      value={fields.artist}
-                      onChange={(v) => set("artist", v)}
-                      options={["No preference", ...ARTISTS.map((a) => a.name)]}
+                      label="Service"
+                      name="service"
+                      value={fields.service}
+                      onChange={(v) => set("service", v)}
+                      options={["Tattoo", "Piercing", "Tattoo & piercing"]}
                     />
                   </div>
                 </fieldset>
@@ -245,7 +244,7 @@ export default function Booking() {
 
                   <div className={styles.row}>
                     <Select
-                      label="Style"
+                      label="Tattoo style"
                       name="style"
                       value={fields.style}
                       onChange={(v) => set("style", v)}

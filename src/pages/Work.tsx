@@ -3,7 +3,6 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Frame from "./../components/Frame";
 import { getImage } from "../data/images";
 import PageShell from "../components/PageShell";
-import { getArtist } from "../data/artists";
 import { FILTERS, WORKS, type Filter } from "../data/works";
 import { EASE } from "../lib/motion";
 import { useSeo } from "../lib/seo";
@@ -57,7 +56,6 @@ export default function Work() {
           <motion.ul className={styles.grid} layout={!reduced}>
             <AnimatePresence mode="popLayout">
               {shown.map((work, i) => {
-                const artist = work.artistId ? getArtist(work.artistId) : undefined;
                 // Landscape photos take two columns; nothing is cropped to fit the grid.
                 const wide = getImage(work.imageId).aspect > 1;
                 return (
@@ -80,7 +78,7 @@ export default function Work() {
                     </div>
                     <div className={styles.meta}>
                       <h2 className={["label", styles.style].join(" ")}>{work.title}</h2>
-                      <p className={styles.artist}>{artist ? `${work.style} · ${artist.name}` : work.style}</p>
+                      <p className={styles.artist}>{work.style}</p>
                       <p className={styles.desc}>{work.description}</p>
                       <p className={styles.placement}>{work.placement}</p>
                     </div>

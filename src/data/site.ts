@@ -18,7 +18,7 @@ export const SITE = {
   locality: "Nyeri, Kenya",
 
   description:
-    "GADELLAA ARTS TATTOO STUDIO is a tattoo studio in Nyeri, Kenya. Custom fine line, blackwork, realism and minimal tattoos, made with intention by artists who take the work seriously.",
+    "GADELLAA ARTS TATTOO STUDIO is a tattoo studio in Nyeri, Kenya. Custom tattoos and body piercing — illustrative, fine line, floral, lettering and minimal work.",
 
   url: "https://gadella.co.ke", // PLACEHOLDER — set the studio's real domain
 
@@ -42,7 +42,7 @@ export const SITE = {
     { label: "Work", to: "/work" },
     { label: "Studio", to: "/studio" },
     { label: "Prices", to: "/prices" },
-    { label: "Artists", to: "/artists" },
+    { label: "Artist", to: "/artist" },
     { label: "Book", to: "/booking" },
   ],
 } as const;

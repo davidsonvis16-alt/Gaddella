@@ -8,7 +8,6 @@ import {
   type PanInfo,
 } from "framer-motion";
 import Frame from "./Frame";
-import { getArtist } from "../data/artists";
 import type { Work } from "../data/works";
 import { DECK_SPRING } from "../lib/motion";
 import styles from "./ShuffleDeck.module.css";
@@ -63,7 +62,6 @@ function DeckCard({ work, depth, total, isTop, reduced, command, instant, onThro
   const dragOpacity = useTransform(x, [-460, -300, 0, 300, 460], [0, 1, 1, 1, 0]);
 
   const slot = slotFor(depth);
-  const artist = work.artistId ? getArtist(work.artistId) : undefined;
 
   const travel = useCallback(() => (ref.current?.offsetWidth ?? 360) + 180, []);
 
@@ -143,7 +141,7 @@ function DeckCard({ work, depth, total, isTop, reduced, command, instant, onThro
       <div className={styles.caption} aria-hidden={!isTop}>
         <p className={["label", styles.captionStyle].join(" ")}>{work.title}</p>
         <p className={styles.captionMeta}>
-          {artist?.name ?? work.style} · {work.placement}
+          {work.style} · {work.placement}
         </p>
       </div>
     </motion.li>
