@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GADELLA — motion system
+   GADELLAA ARTS TATTOO STUDIO — motion system
    One place for every easing curve and variant, so the whole site moves with
    the same hand. Restraint is the brief: things arrive, they do not perform.
    ========================================================================== */

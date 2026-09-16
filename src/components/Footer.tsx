@@ -12,7 +12,7 @@ export default function Footer() {
       <div className={["shell", styles.inner].join(" ")}>
         <div className={styles.identity}>
           <Link to="/" className={styles.wordmark}>
-            {SITE.name}
+            {SITE.shortName}
           </Link>
           <p className="label">
             {SITE.city}, {SITE.country}

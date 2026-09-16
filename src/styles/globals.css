@@ -20,10 +20,9 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
+/* Clip on body only — clipping the root element breaks sticky positioning
+   and some compositors. Oversized type can never scroll the page sideways. */
 body {
-  /* The single most common failure on editorial layouts: a wide child pushing
-     the viewport. Clip here so oversized type can never scroll the page. */
   max-width: 100%;
   overflow-x: clip;
 }

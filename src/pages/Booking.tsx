@@ -1,7 +1,6 @@
 import { useRef, useState, type FormEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import ArrowLink from "../components/ArrowLink";
-import Frame from "../components/Frame";
 import PageShell from "../components/PageShell";
 import { ARTISTS } from "../data/artists";
 import { STYLES } from "../data/works";
@@ -66,7 +65,7 @@ export default function Booking() {
     title: "Book a session",
     path: "/booking",
     description:
-      "Request a tattoo session at GADELLA in Nyeri, Kenya. Tell us the idea, the placement and the artist you'd like to work with.",
+      "Request a tattoo session at GADELLAA ARTS TATTOO STUDIO in Nyeri, Kenya. Tell us the idea, the placement and the artist you'd like to work with.",
   });
 
   const set = <K extends keyof Fields>(key: K, value: Fields[K]) => {
@@ -334,7 +333,7 @@ export default function Booking() {
                     className={styles.checkbox}
                   />
                   <label htmlFor="consent" className={styles.consentLabel}>
-                    I'm happy for GADELLA to hold these details in order to answer my enquiry.
+                    I'm happy for {SITE.shortName} to hold these details in order to answer my enquiry.
                     <span className={styles.required} aria-hidden="true">
                       {" "}
                       *
@@ -360,7 +359,6 @@ export default function Booking() {
           </div>
 
           <aside className={styles.aside}>
-            <Frame image="studioLight" sizes="(max-width: 1023px) 100vw, 30vw" />
             <dl className={styles.info}>
               <div>
                 <dt className="label">Studio</dt>
@@ -382,7 +380,15 @@ export default function Booking() {
               </div>
               <div>
                 <dt className="label">Phone</dt>
-                <dd>{SITE.contact.phone}</dd>
+                <dd>
+                  <a href={SITE.contact.phoneHref} className={styles.infoLink}>
+                    {SITE.contact.phone}
+                  </a>{" "}
+                  ·{" "}
+                  <a href={SITE.contact.whatsapp} target="_blank" rel="noreferrer noopener" className={styles.infoLink}>
+                    WhatsApp
+                  </a>
+                </dd>
               </div>
             </dl>
           </aside>

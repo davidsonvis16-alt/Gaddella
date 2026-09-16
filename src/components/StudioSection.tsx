@@ -1,6 +1,5 @@
 import ArrowLink from "./ArrowLink";
 import DisplayLines from "./DisplayLines";
-import Frame from "./Frame";
 import { Reveal, RevealGroup, RevealItem } from "./Reveal";
 import { STUDIO_PRINCIPLES } from "../data/studio";
 import styles from "./StudioSection.module.css";
@@ -19,18 +18,6 @@ export default function StudioSection() {
           One floor in Nyeri, kept plain on purpose. Space to talk the idea through, a chair to sit still in, and
           nothing on the walls competing with the work.
         </Reveal>
-      </div>
-
-      <div className={["shell", styles.frames].join(" ")}>
-        <div className={styles.wide}>
-          <Frame image="studioInterior" sizes="(max-width: 767px) 100vw, 62vw" />
-          <p className={["label", styles.caption].join(" ")}>The room</p>
-        </div>
-
-        <div className={styles.tall}>
-          <Frame image="studioStation" sizes="(max-width: 767px) 100vw, 32vw" />
-          <p className={["label", styles.caption].join(" ")}>The station</p>
-        </div>
       </div>
 
       <RevealGroup as="ol" className={["shell", styles.principles].join(" ")} each={0.08}>

@@ -1,57 +1,8 @@
 /* ==========================================================================
-   GADELLA — the studio
+   GADELLAA ARTS TATTOO STUDIO — the studio
    Placeholder copy. Describe the real room before launch, and do not add
    health or safety claims the studio cannot stand behind.
    ========================================================================== */
-
-import type { ImageId } from "./images";
-
-export type StudioFrame = {
-  id: string;
-  title: string;
-  caption: string;
-  imageId: ImageId;
-  /** Layout weight in the studio grid. */
-  span: "wide" | "tall" | "square";
-};
-
-export const STUDIO_FRAMES: StudioFrame[] = [
-  {
-    id: "s-01",
-    title: "The room",
-    caption: "One floor in Nyeri, kept deliberately plain. Light, space, and somewhere to sit still for a few hours.",
-    imageId: "studioInterior",
-    span: "wide",
-  },
-  {
-    id: "s-02",
-    title: "The station",
-    caption: "Each artist sets up their own station and breaks it down at the end of every session.",
-    imageId: "studioStation",
-    span: "tall",
-  },
-  {
-    id: "s-03",
-    title: "The tools",
-    caption: "Single-use needles and cartridges. Machines maintained by the artist who works on them.",
-    imageId: "studioDetail",
-    span: "square",
-  },
-  {
-    id: "s-04",
-    title: "Waiting",
-    caption: "A room to arrive early in. Consultations happen here, before anything is drawn.",
-    imageId: "studioWaiting",
-    span: "wide",
-  },
-  {
-    id: "s-05",
-    title: "Light",
-    caption: "Most sessions run in daylight. The room faces the morning, which is when the work is easiest.",
-    imageId: "studioLight",
-    span: "tall",
-  },
-];
 
 export const STUDIO_PRINCIPLES = [
   {

@@ -4,6 +4,7 @@ import ArrowLink from "./ArrowLink";
 import DisplayLines from "./DisplayLines";
 import Frame from "./Frame";
 import { Reveal } from "./Reveal";
+import { PLACEMENTS } from "../data/images";
 import styles from "./BookingCTA.module.css";
 
 export default function BookingCTA() {
@@ -16,7 +17,7 @@ export default function BookingCTA() {
   return (
     <section ref={ref} className={["theme-dark", styles.section].join(" ")} aria-labelledby="booking-heading">
       <motion.div className={styles.media} style={{ y }}>
-        <Frame image="booking" sizes="100vw" />
+        <Frame image={PLACEMENTS.booking} sizes="100vw" />
       </motion.div>
       <div className={styles.veil} aria-hidden="true" />
 

@@ -1,0 +1,123 @@
+.section {
+  border-top: 1px solid var(--line-soft);
+}
+
+.groups {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.group {
+  min-width: 0;
+}
+
+.groupTitle {
+  color: var(--fg);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.items {
+  display: grid;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.service {
+  font-size: var(--fs-body);
+  color: var(--fg);
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  color: var(--fg-dim);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.note {
+  white-space: normal;
+  max-width: 18ch;
+  color: var(--fg-faint);
+}
+
+/* ---- colour surcharge -------------------------------------------------- */
+
+.colour {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  padding: clamp(1.75rem, 4vw, 3rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.colourLabel {
+  color: var(--fg-faint);
+}
+
+.colourPrice {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  line-height: var(--lh-tight);
+}
+
+.colourNote {
+  font-size: var(--fs-small);
+  color: var(--fg-dim);
+}
+
+/* ---- contact ----------------------------------------------------------- */
+
+.contact {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.contactLine {
+  margin-top: 0.6rem;
+  font-size: var(--fs-body-lg);
+  color: var(--fg);
+}
+
+.contactLink {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+}
+
+@media (min-width: 1024px) {
+  .groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

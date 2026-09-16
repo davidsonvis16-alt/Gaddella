@@ -1,23 +1,19 @@
 /* ==========================================================================
-   GADELLA — image configuration layer
+   GADELLAA ARTS TATTOO STUDIO — image configuration layer
    --------------------------------------------------------------------------
-   THIS IS THE ONLY FILE YOU EDIT TO PUT THE STUDIO'S OWN PHOTOGRAPHY ON THE SITE.
+   THIS IS THE ONLY FILE YOU EDIT TO CHANGE THE PHOTOGRAPHY ON THE SITE.
 
-   Every image on the site is a *slot*. A slot ships with `src: null`, which
-   renders a clearly marked placeholder plate (public/images/plates/*.svg) —
-   a neutral charcoal field stamped "GADELLA · IMAGE SLOT". Nothing on this
-   site claims to be GADELLA's work until GADELLA puts it here.
+   Every image on the site is a *slot*. Each slot points at a photograph of
+   the studio's own work in  public/images/work/ , named after the piece and
+   its placement (e.g. tiger-shoulder.jpg).
 
-   To publish a real photograph:
-     1. Drop the file in  public/images/  (e.g. public/images/hero.jpg)
-     2. Set  src: "/images/hero.jpg"  on the matching slot below
+   To swap or add a photograph:
+     1. Drop the file in  public/images/work/  — name it  <design>-<placement>.jpg
+     2. Point  src  at it on the matching slot below
      3. Update `alt` to describe that specific photograph
-     4. If the photo is licensed from a third party, fill in `credit`
 
    Optionally provide `srcSet` for responsive delivery, e.g.
-     srcSet: "/images/hero-1200.jpg 1200w, /images/hero-2400.jpg 2400w"
-
-   `brief` is the art direction for each slot — what to shoot, and why.
+     srcSet: "/images/work/tiger-shoulder-1200.jpg 1200w, /images/work/tiger-shoulder-2400.jpg 2400w"
    ========================================================================== */
 
 export type ImageCredit = {
@@ -33,16 +29,11 @@ export type ImageCredit = {
 
 export type ImageSlot = {
   id: string;
-  /** null → the marked placeholder plate is used. Set a path to go live. */
-  src: string | null;
+  src: string;
   srcSet?: string;
   sizes?: string;
-  /** Fallback plate, always present so the layout can never break. */
-  plate: string;
-  /** Describes the *image*, not the slot. Rewrite when you set `src`. */
+  /** Describes the photograph. */
   alt: string;
-  /** Art direction for whoever shoots or selects the replacement. */
-  brief: string;
   /** width / height — reserves space so nothing shifts while loading. */
   aspect: number;
   /** object-position, for crops that need a specific anchor. */
@@ -50,254 +41,147 @@ export type ImageSlot = {
   credit?: ImageCredit | null;
 };
 
-const plate = (name: string) => `/images/plates/${name}.svg`;
+const work = (name: string) => `/images/work/${name}.jpg`;
+
+/** Every photo is a phone shot at 3:4, or 4:3 for the two landscape frames. */
+const PORTRAIT = 3 / 4;
+const LANDSCAPE = 4 / 3;
 
 export const IMAGES = {
-  /* ---- hero ------------------------------------------------------------ */
-  hero: {
-    id: "hero",
-    src: null,
-    plate: plate("hero"),
-    alt: "GADELLA tattoo studio in Nyeri — placeholder image slot.",
-    brief:
-      "Landscape. An artist mid-session, working on a client's forearm. Dark studio, single warm key light from the left, black clothing, machine and ink caps in frame. Shoot wide with the subject off-centre right so the headline can sit in the left third.",
-    aspect: 2400 / 1350,
-    focal: "60% 50%",
-    credit: null,
+  /* ---- the pieces ------------------------------------------------------ */
+  tigerShoulder: {
+    id: "tigerShoulder",
+    src: work("tiger-shoulder"),
+    alt: "Tiger head tattoo in black linework wrapping a client's shoulder, photographed in the studio.",
+    aspect: PORTRAIT,
+    focal: "65% 45%",
   },
-  heroPortrait: {
-    id: "heroPortrait",
-    src: null,
-    plate: plate("hero-portrait"),
-    alt: "GADELLA tattoo studio in Nyeri — placeholder image slot.",
-    brief:
-      "Portrait crop of the same hero moment, for phones. Keep the artist's hands and the machine in the lower two thirds; leave the top clear for the wordmark.",
-    aspect: 1400 / 1900,
+  pocketWatchChest: {
+    id: "pocketWatchChest",
+    src: work("pocket-watch-chest-piece"),
+    alt: "Pocket watch chest piece with Roman numerals and filigree scrollwork, bold black shading.",
+    aspect: PORTRAIT,
+    focal: "55% 40%",
+  },
+  sunflowersHip: {
+    id: "sunflowersHip",
+    src: work("sunflowers-hip"),
+    alt: "Cluster of shaded sunflowers and daisies tattooed across a client's hip.",
+    aspect: PORTRAIT,
+    focal: "40% 60%",
+  },
+  compassForearm: {
+    id: "compassForearm",
+    src: work("compass-forearm"),
+    alt: "Forearm piece stacking a cross, mountains, compass, yin-yang sunset and globe, ending in an arrowhead.",
+    aspect: PORTRAIT,
+    focal: "50% 50%",
+  },
+  compassForearmAlt: {
+    id: "compassForearmAlt",
+    src: work("compass-forearm-2"),
+    alt: "The compass and mountains forearm piece under the studio ring light.",
+    aspect: PORTRAIT,
+    focal: "50% 55%",
+  },
+  onePieceForearm: {
+    id: "onePieceForearm",
+    src: work("one-piece-forearm"),
+    alt: "One Piece anime forearm tattoo — the Straw Hat Jolly Roger breaking out of swirling clouds.",
+    aspect: LANDSCAPE,
+    focal: "50% 55%",
+  },
+  onePieceForearmAlt: {
+    id: "onePieceForearmAlt",
+    src: work("one-piece-forearm-2"),
+    alt: "The One Piece forearm tattoo resting on a wrapped studio bench beside the phone rig.",
+    aspect: LANDSCAPE,
+    focal: "55% 60%",
+  },
+  snakeShoulderBlade: {
+    id: "snakeShoulderBlade",
+    src: work("snake-and-flowers-shoulder-blade"),
+    alt: "Patterned snake winding through three flowers down a client's shoulder blade.",
+    aspect: PORTRAIT,
+    focal: "50% 60%",
+  },
+  snakeShoulderBladeAlt: {
+    id: "snakeShoulderBladeAlt",
+    src: work("snake-and-flowers-shoulder-blade-2"),
+    alt: "The snake and flowers shoulder blade piece framed by the studio ring light.",
+    aspect: PORTRAIT,
+    focal: "45% 60%",
+  },
+  sunMoonThigh: {
+    id: "sunMoonThigh",
+    src: work("sun-and-moon-thigh"),
+    alt: "Fine line sun and crescent moon with faces, leaves and small stars on the back of a thigh.",
+    aspect: PORTRAIT,
+    focal: "50% 60%",
+  },
+  flowerUpperBack: {
+    id: "flowerUpperBack",
+    src: work("flower-fine-line-upper-back"),
+    alt: "Delicate fine line flower stem between a client's shoulder blades.",
+    aspect: PORTRAIT,
+    focal: "50% 65%",
+  },
+  veniVidiViciRibs: {
+    id: "veniVidiViciRibs",
+    src: work("veni-vidi-vici-ribs"),
+    alt: "\"VENI·VIDI·VICI\" in serif capitals running down a client's ribs.",
+    aspect: PORTRAIT,
+    focal: "55% 55%",
+  },
+  chineseCharactersChest: {
+    id: "chineseCharactersChest",
+    src: work("chinese-characters-chest"),
+    alt: "Three Chinese characters, 格里芬 (Griffin), tattooed vertically down the chest.",
+    aspect: PORTRAIT,
+    focal: "65% 55%",
+  },
+  princeScriptChest: {
+    id: "princeScriptChest",
+    src: work("prince-script-chest"),
+    alt: "\"Prince\" in flowing script with a small star, tattooed on the upper chest.",
+    aspect: PORTRAIT,
     focal: "50% 45%",
-    credit: null,
   },
-
-  /* ---- work ------------------------------------------------------------ */
-  workFineLine01: {
-    id: "workFineLine01",
-    src: null,
-    plate: plate("work-fine-line-01"),
-    alt: "Fine line tattoo — placeholder image slot.",
-    brief: "Close crop of a healed fine line piece on a forearm. Soft directional light, skin texture visible, no flash.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workBlackwork01: {
-    id: "workBlackwork01",
-    src: null,
-    plate: plate("work-blackwork-01"),
-    alt: "Blackwork tattoo — placeholder image slot.",
-    brief: "Blackwork along the spine, shot from directly behind. Hard side light to bring out the negative space.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workRealism01: {
-    id: "workRealism01",
-    src: null,
-    plate: plate("work-realism-01"),
-    alt: "Realism tattoo — placeholder image slot.",
-    brief: "Black and grey realism on a forearm, arm turned slightly toward the light so the gradients read.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workMinimal01: {
-    id: "workMinimal01",
-    src: null,
-    plate: plate("work-minimal-01"),
-    alt: "Minimal tattoo — placeholder image slot.",
-    brief: "A small minimal piece on a calf. Lots of clean skin around it — the emptiness is the composition.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workNeo01: {
-    id: "workNeo01",
-    src: null,
-    plate: plate("work-neo-01"),
-    alt: "Neo traditional tattoo — placeholder image slot.",
-    brief: "Neo traditional upper arm piece. Keep the light even so the line weight stays honest.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workFineLine02: {
-    id: "workFineLine02",
-    src: null,
-    plate: plate("work-fine-line-02"),
-    alt: "Fine line tattoo — placeholder image slot.",
-    brief: "Fine line sternum piece. Shoot square-on, chest lit softly from above.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workBlackwork02: {
-    id: "workBlackwork02",
-    src: null,
-    plate: plate("work-blackwork-02"),
-    alt: "Blackwork tattoo — placeholder image slot.",
-    brief: "Blackwork shoulder cap, three-quarter angle, deep shadow behind the subject.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workRealism02: {
-    id: "workRealism02",
-    src: null,
-    plate: plate("work-realism-02"),
-    alt: "Realism tattoo — placeholder image slot.",
-    brief: "A realism study — tight crop, only part of the piece in frame. Detail over completeness.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workMinimal02: {
-    id: "workMinimal02",
-    src: null,
-    plate: plate("work-minimal-02"),
-    alt: "Minimal tattoo — placeholder image slot.",
-    brief: "Minimal wrist piece on a high-key background — one bright frame to break the dark run.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workNeo02: {
-    id: "workNeo02",
-    src: null,
-    plate: plate("work-neo-02"),
-    alt: "Neo traditional tattoo — placeholder image slot.",
-    brief: "Neo traditional thigh piece, subject seated, natural window light.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workBlackwork03: {
-    id: "workBlackwork03",
-    src: null,
-    plate: plate("work-blackwork-03"),
-    alt: "Blackwork tattoo — placeholder image slot.",
-    brief: "Full back blackwork, shot far enough back to hold the whole composition.",
-    aspect: 0.8,
-    credit: null,
-  },
-  workFineLine03: {
-    id: "workFineLine03",
-    src: null,
-    plate: plate("work-fine-line-03"),
-    alt: "Fine line tattoo — placeholder image slot.",
-    brief: "Fine line ankle piece, low angle, floor of the studio slightly out of focus behind.",
-    aspect: 0.8,
-    credit: null,
-  },
-
-  /* ---- artists --------------------------------------------------------- */
-  artist01: {
-    id: "artist01",
-    src: null,
-    plate: plate("artist-01"),
-    alt: "GADELLA artist portrait — placeholder image slot.",
-    brief: "Editorial portrait. Black clothing, dark background, one soft key. Calm, direct, unstyled — no props.",
-    aspect: 0.8,
-    credit: null,
-  },
-  artist02: {
-    id: "artist02",
-    src: null,
-    plate: plate("artist-02"),
-    alt: "GADELLA artist portrait — placeholder image slot.",
-    brief: "Same lighting setup as the other portraits so the set reads as one series. Vary only the pose.",
-    aspect: 0.8,
-    credit: null,
-  },
-  artist03: {
-    id: "artist03",
-    src: null,
-    plate: plate("artist-03"),
-    alt: "GADELLA artist portrait — placeholder image slot.",
-    brief: "Three-quarter turn, eyes off camera. Keep the crop tight from mid-chest.",
-    aspect: 0.8,
-    credit: null,
-  },
-  artist04: {
-    id: "artist04",
-    src: null,
-    plate: plate("artist-04"),
-    alt: "GADELLA artist portrait — placeholder image slot.",
-    brief: "Hands in frame if the artist is comfortable — it connects the portrait to the craft.",
-    aspect: 0.8,
-    credit: null,
-  },
-  artistWide: {
-    id: "artistWide",
-    src: null,
-    plate: plate("artist-wide"),
-    alt: "A GADELLA artist at the station — placeholder image slot.",
-    brief:
-      "Tall frame. An artist at the station, seen from the side, concentrating. This runs full-bleed next to the artists headline, so leave the right edge quiet.",
-    aspect: 1600 / 1800,
-    focal: "50% 40%",
-    credit: null,
-  },
-
-  /* ---- studio ---------------------------------------------------------- */
-  studioInterior: {
-    id: "studioInterior",
-    src: null,
-    plate: plate("studio-interior"),
-    alt: "GADELLA studio interior — placeholder image slot.",
-    brief: "Wide interior of the Nyeri studio, empty, daylight. Straight lines, symmetrical if the room allows.",
-    aspect: 1.6,
-    credit: null,
-  },
-  studioStation: {
-    id: "studioStation",
-    src: null,
-    plate: plate("studio-station"),
-    alt: "A GADELLA workstation — placeholder image slot.",
-    brief: "One workstation, prepared and untouched: chair, lamp, tray, wrapped machine. Nobody in frame.",
-    aspect: 0.8,
-    credit: null,
-  },
-  studioDetail: {
-    id: "studioDetail",
-    src: null,
-    plate: plate("studio-detail"),
-    alt: "Equipment detail at GADELLA — placeholder image slot.",
-    brief: "Macro on tools — needle cartridges, ink caps, a machine on its stand. Shallow depth of field.",
-    aspect: 1,
-    credit: null,
-  },
-  studioWaiting: {
-    id: "studioWaiting",
-    src: null,
-    plate: plate("studio-waiting"),
-    alt: "The waiting area at GADELLA — placeholder image slot.",
-    brief: "Waiting area, high key, bright and plain. This is the one light frame in a dark sequence.",
-    aspect: 1.6,
-    credit: null,
-  },
-  studioLight: {
-    id: "studioLight",
-    src: null,
-    plate: plate("studio-light"),
-    alt: "Light study inside GADELLA — placeholder image slot.",
-    brief: "A quiet corner — light falling across a wall or the floor. Almost nothing in it. Pure atmosphere.",
-    aspect: 0.8,
-    credit: null,
-  },
-
-  /* ---- booking --------------------------------------------------------- */
-  booking: {
-    id: "booking",
-    src: null,
-    plate: plate("booking"),
-    alt: "GADELLA studio at dusk — placeholder image slot.",
-    brief:
-      "Wide, dark, calm. The studio after hours with one lamp on. Text sits on the left third, so keep that area unbusy.",
-    aspect: 2,
+  crownedDollarArm: {
+    id: "crownedDollarArm",
+    src: work("crowned-dollar-upper-arm"),
+    alt: "Dripping dollar sign wearing a crown, tattooed on the back of an upper arm.",
+    aspect: PORTRAIT,
     focal: "60% 50%",
-    credit: null,
+  },
+  dragonWrist: {
+    id: "dragonWrist",
+    src: work("dragon-wrist"),
+    alt: "Small flying dragon with two sparkle stars on the inner wrist.",
+    aspect: PORTRAIT,
+    focal: "35% 55%",
+  },
+  butterflyThigh: {
+    id: "butterflyThigh",
+    src: work("butterfly-thigh"),
+    alt: "Monarch butterfly tattoo on the upper thigh.",
+    aspect: PORTRAIT,
+    focal: "25% 60%",
   },
 } satisfies Record<string, ImageSlot>;
 
 export type ImageId = keyof typeof IMAGES;
+
+/**
+ * Where the second-angle photographs appear outside the gallery. Tattoo
+ * photos are only used where the work itself is the subject — never as
+ * stand-ins for artist portraits or pictures of the studio.
+ */
+export const PLACEMENTS = {
+  hero: "onePieceForearmAlt",
+  heroPortrait: "compassForearmAlt",
+  booking: "snakeShoulderBladeAlt",
+} as const satisfies Record<string, ImageId>;
 
 /** Look up a slot. Throws in dev if an id is wrong, rather than rendering nothing. */
 export function getImage(id: ImageId): ImageSlot {
@@ -306,16 +190,6 @@ export function getImage(id: ImageId): ImageSlot {
     throw new Error(`[images] unknown image id: "${String(id)}"`);
   }
   return slot;
-}
-
-/** The URL actually rendered: the studio's photograph if set, otherwise the plate. */
-export function resolveSrc(slot: ImageSlot): string {
-  return slot.src ?? slot.plate;
-}
-
-/** True while a slot is still showing its placeholder — used to badge the UI honestly. */
-export function isPlaceholder(slot: ImageSlot): boolean {
-  return slot.src === null;
 }
 
 /** Every credit that needs to appear in the footer / colophon. */

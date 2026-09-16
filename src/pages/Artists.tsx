@@ -1,5 +1,4 @@
 import ArrowLink from "../components/ArrowLink";
-import Frame from "../components/Frame";
 import PageShell from "../components/PageShell";
 import { Reveal, RevealGroup, RevealItem } from "../components/Reveal";
 import { ARTISTS } from "../data/artists";
@@ -12,7 +11,7 @@ export default function Artists() {
     title: "Artists",
     path: "/artists",
     description:
-      "The tattoo artists at GADELLA in Nyeri, Kenya — blackwork, fine line, realism, minimal and neo traditional specialists.",
+      "The tattoo artists at GADELLAA ARTS TATTOO STUDIO in Nyeri, Kenya.",
   });
 
   return (
@@ -28,12 +27,7 @@ export default function Artists() {
             return (
               <RevealItem as="li" key={artist.id} className={styles.row}>
                 <article id={artist.id} className={styles.card}>
-                  <div className={styles.media}>
-                    <Frame image={artist.imageId} hoverZoom sizes="(max-width: 767px) 100vw, 40vw" />
-                    <span className={["label", styles.num].join(" ")}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
+                  <span className={["label", styles.num].join(" ")}>{String(i + 1).padStart(2, "0")}</span>
 
                   <div className={styles.body}>
                     <p className={["label", styles.role].join(" ")}>{artist.role}</p>
@@ -56,7 +50,7 @@ export default function Artists() {
                         <dd>{String(count).padStart(2, "0")}</dd>
                       </div>
                       <div>
-                        <dt className="label">At GADELLA since</dt>
+                        <dt className="label">At the studio since</dt>
                         <dd>{artist.since}</dd>
                       </div>
                     </dl>

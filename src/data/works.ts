@@ -1,20 +1,22 @@
 /* ==========================================================================
-   GADELLA — portfolio
+   GADELLAA ARTS TATTOO STUDIO — portfolio
    --------------------------------------------------------------------------
-   Placeholder records. Each one maps to an image slot in data/images.ts and an
-   artist in data/artists.ts. Replace the copy, keep the shape.
+   One record per finished piece. Each maps to an image slot in data/images.ts.
+   Pieces photographed from more than one angle use the first angle here; the
+   second angle is used elsewhere on the site (see PLACEMENTS in images.ts).
    ========================================================================== */
 
 import type { ImageId } from "./images";
 
-export const STYLES = ["Fine line", "Blackwork", "Realism", "Minimal", "Neo traditional"] as const;
+export const STYLES = ["Illustrative", "Fine line", "Floral", "Lettering", "Minimal"] as const;
 export type Style = (typeof STYLES)[number];
 
 export type Work = {
   id: string;
+  title: string;
   style: Style;
-  /** Artist id from data/artists.ts */
-  artistId: string;
+  /** Artist id from data/artists.ts, when the piece is credited to one artist. */
+  artistId?: string;
   placement: string;
   description: string;
   imageId: ImageId;
@@ -24,104 +26,120 @@ export type Work = {
 
 export const WORKS: Work[] = [
   {
-    id: "w-01",
-    style: "Fine line",
-    artistId: "njeri-w",
-    placement: "Forearm",
-    description: "Single-needle linework, carried across the forearm in one pass.",
-    imageId: "workFineLine01",
+    id: "tiger-shoulder",
+    title: "Tiger",
+    style: "Illustrative",
+    placement: "Shoulder",
+    description: "A tiger's head drawn to wrap the curve of the shoulder.",
+    imageId: "tigerShoulder",
     featured: 1,
   },
   {
-    id: "w-02",
-    style: "Blackwork",
-    artistId: "wanjiku-m",
-    placement: "Spine",
-    description: "Bold blackwork with controlled negative space.",
-    imageId: "workBlackwork01",
+    id: "snake-and-flowers",
+    title: "Snake & flowers",
+    style: "Floral",
+    placement: "Shoulder blade",
+    description: "A patterned snake winding through three blossoms.",
+    imageId: "snakeShoulderBlade",
     featured: 2,
   },
   {
-    id: "w-03",
-    style: "Realism",
-    artistId: "amara-o",
+    id: "compass-forearm",
+    title: "Compass",
+    style: "Fine line",
     placement: "Forearm",
-    description: "Black and grey realism, built up over three sittings.",
-    imageId: "workRealism01",
+    description: "Cross, mountains, compass, sunset and globe, stacked down the forearm to an arrowhead.",
+    imageId: "compassForearm",
     featured: 3,
   },
   {
-    id: "w-04",
-    style: "Minimal",
-    artistId: "njeri-w",
-    placement: "Calf",
-    description: "Small, quiet, and sized for the room around it.",
-    imageId: "workMinimal01",
+    id: "pocket-watch",
+    title: "Pocket watch",
+    style: "Illustrative",
+    placement: "Chest",
+    description: "A pocket watch chest piece with Roman numerals and heavy filigree shading.",
+    imageId: "pocketWatchChest",
     featured: 4,
   },
   {
-    id: "w-05",
-    style: "Neo traditional",
-    artistId: "kimathi-n",
-    placement: "Upper arm",
-    description: "Hand-drawn illustrative work with a firm outline.",
-    imageId: "workNeo01",
-  },
-  {
-    id: "w-06",
+    id: "sun-and-moon",
+    title: "Sun & moon",
     style: "Fine line",
-    artistId: "njeri-w",
-    placement: "Sternum",
-    description: "Symmetrical fine line piece, centred on the sternum.",
-    imageId: "workFineLine02",
-  },
-  {
-    id: "w-07",
-    style: "Blackwork",
-    artistId: "wanjiku-m",
-    placement: "Shoulder",
-    description: "Solid black cap wrapped to follow the deltoid.",
-    imageId: "workBlackwork02",
-  },
-  {
-    id: "w-08",
-    style: "Realism",
-    artistId: "amara-o",
-    placement: "Inner arm",
-    description: "A detail study — soft gradients held in a tight crop.",
-    imageId: "workRealism02",
-  },
-  {
-    id: "w-09",
-    style: "Minimal",
-    artistId: "njeri-w",
-    placement: "Wrist",
-    description: "Two lines and the skin between them.",
-    imageId: "workMinimal02",
-  },
-  {
-    id: "w-10",
-    style: "Neo traditional",
-    artistId: "kimathi-n",
     placement: "Thigh",
-    description: "Illustrative composition drawn to the curve of the leg.",
-    imageId: "workNeo02",
+    description: "Sun and crescent moon faces, framed by leaves and small stars.",
+    imageId: "sunMoonThigh",
   },
   {
-    id: "w-11",
-    style: "Blackwork",
-    artistId: "wanjiku-m",
-    placement: "Full back",
-    description: "A back piece planned across a year of sessions.",
-    imageId: "workBlackwork03",
+    id: "sunflowers",
+    title: "Sunflowers",
+    style: "Floral",
+    placement: "Hip",
+    description: "A shaded cluster of sunflowers and daisies following the line of the hip.",
+    imageId: "sunflowersHip",
   },
   {
-    id: "w-12",
+    id: "one-piece",
+    title: "One Piece",
+    style: "Illustrative",
+    placement: "Forearm",
+    description: "The Straw Hat Jolly Roger bursting out of swirling anime clouds.",
+    imageId: "onePieceForearm",
+  },
+  {
+    id: "veni-vidi-vici",
+    title: "Veni vidi vici",
+    style: "Lettering",
+    placement: "Ribs",
+    description: "Serif capitals set vertically down the ribs.",
+    imageId: "veniVidiViciRibs",
+  },
+  {
+    id: "flower-stem",
+    title: "Flower stem",
     style: "Fine line",
-    artistId: "njeri-w",
-    placement: "Ankle",
-    description: "Fine line detail set low, where it moves with the foot.",
-    imageId: "workFineLine03",
+    placement: "Upper back",
+    description: "A single flowering stem between the shoulder blades.",
+    imageId: "flowerUpperBack",
+  },
+  {
+    id: "chinese-characters",
+    title: "格里芬 — Griffin",
+    style: "Lettering",
+    placement: "Chest",
+    description: "A name written in three Chinese characters, running down the chest.",
+    imageId: "chineseCharactersChest",
+  },
+  {
+    id: "crowned-dollar",
+    title: "Crowned dollar",
+    style: "Illustrative",
+    placement: "Upper arm",
+    description: "A dripping dollar sign wearing a crown.",
+    imageId: "crownedDollarArm",
+  },
+  {
+    id: "prince-script",
+    title: "Prince",
+    style: "Lettering",
+    placement: "Chest",
+    description: "A name in flowing script, finished with a small star.",
+    imageId: "princeScriptChest",
+  },
+  {
+    id: "dragon",
+    title: "Dragon",
+    style: "Minimal",
+    placement: "Wrist",
+    description: "A small flying dragon with two sparkle stars.",
+    imageId: "dragonWrist",
+  },
+  {
+    id: "butterfly",
+    title: "Butterfly",
+    style: "Minimal",
+    placement: "Thigh",
+    description: "A monarch butterfly, solid outline with fine vein detail.",
+    imageId: "butterflyThigh",
   },
 ];
 

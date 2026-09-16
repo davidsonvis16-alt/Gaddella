@@ -63,7 +63,7 @@ function DeckCard({ work, depth, total, isTop, reduced, command, instant, onThro
   const dragOpacity = useTransform(x, [-460, -300, 0, 300, 460], [0, 1, 1, 1, 0]);
 
   const slot = slotFor(depth);
-  const artist = getArtist(work.artistId);
+  const artist = work.artistId ? getArtist(work.artistId) : undefined;
 
   const travel = useCallback(() => (ref.current?.offsetWidth ?? 360) + 180, []);
 
@@ -134,16 +134,16 @@ function DeckCard({ work, depth, total, isTop, reduced, command, instant, onThro
           className={styles.face}
           tabIndex={isTop ? 0 : -1}
           onClick={() => isTop && onThrow(1)}
-          aria-label={`${work.style}, ${work.placement}. Show the next piece.`}
+          aria-label={`${work.title}, ${work.placement}. Show the next piece.`}
         >
           <Frame image={work.imageId} ratio={0.78} still sizes="(max-width: 767px) 84vw, 34vw" />
         </button>
       </motion.div>
 
       <div className={styles.caption} aria-hidden={!isTop}>
-        <p className={["label", styles.captionStyle].join(" ")}>{work.style}</p>
+        <p className={["label", styles.captionStyle].join(" ")}>{work.title}</p>
         <p className={styles.captionMeta}>
-          {artist?.name ?? "GADELLA"} · {work.placement}
+          {artist?.name ?? work.style} · {work.placement}
         </p>
       </div>
     </motion.li>
@@ -263,7 +263,7 @@ export default function ShuffleDeck({ works }: { works: Work[] }) {
       </div>
 
       <p className="visually-hidden" aria-live="polite">
-        {`${current.style}, ${current.placement}. Card ${(index % total) + 1} of ${total}.`}
+        {`${current.title}, ${current.placement}. Card ${(index % total) + 1} of ${total}.`}
       </p>
 
       <div className={styles.controls}>
@@ -294,7 +294,7 @@ export default function ShuffleDeck({ works }: { works: Work[] }) {
                 className={[styles.indexItem, active ? styles.indexActive : ""].filter(Boolean).join(" ")}
                 aria-current={active ? "true" : undefined}
               >
-                <span className={styles.indexStyle}>{work.style}</span>
+                <span className={styles.indexStyle}>{work.title}</span>
                 <span className={styles.indexNum}>
                   {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
                 </span>

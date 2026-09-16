@@ -39,7 +39,7 @@ export default function Navbar() {
       <header className={[styles.bar, scrolled ? styles.solid : ""].filter(Boolean).join(" ")}>
         <div className={styles.inner}>
           <Link to="/" className={styles.wordmark} aria-label={`${SITE.name} — home`}>
-            {SITE.name}
+            {SITE.shortName}
           </Link>
 
           <nav className={styles.nav} aria-label="Primary">

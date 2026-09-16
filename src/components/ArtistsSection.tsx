@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import ArrowLink from "./ArrowLink";
 import DisplayLines from "./DisplayLines";
-import Frame from "./Frame";
 import { Reveal, RevealGroup, RevealItem } from "./Reveal";
 import { ARTISTS } from "../data/artists";
 import styles from "./ArtistsSection.module.css";
@@ -9,11 +8,7 @@ import styles from "./ArtistsSection.module.css";
 export default function ArtistsSection() {
   return (
     <section className={["theme-light", styles.section].join(" ")} aria-labelledby="artists-heading">
-      <div className={styles.grid}>
-        <div className={styles.media}>
-          <Frame image="artistWide" sizes="(max-width: 1023px) 100vw, 38vw" />
-        </div>
-
+      <div className={["shell", styles.grid].join(" ")}>
         <div className={styles.content}>
           <div className={styles.copy}>
             <Reveal as="p" className={["label", styles.eyebrow].join(" ")} distance={14}>

@@ -58,7 +58,8 @@
 }
 
 .wordmark {
-  font-size: clamp(3.25rem, 15vw, 13.5rem);
+  /* Two lines — "Gadellaa Arts / Tattoo Studio" — so sized to the longer one. */
+  font-size: clamp(2.6rem, 9.5vw, 9.5rem);
   letter-spacing: -0.015em;
   text-transform: uppercase;
   color: var(--white);

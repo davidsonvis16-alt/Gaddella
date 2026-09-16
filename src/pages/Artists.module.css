@@ -13,17 +13,8 @@
   align-items: start;
 }
 
-.media {
-  position: relative;
-  min-width: 0;
-}
-
 .num {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  color: var(--off-white);
-  mix-blend-mode: difference;
+  color: var(--fg-faint);
 }
 
 .body {
@@ -106,18 +97,13 @@
 
 @media (min-width: 768px) {
   .card {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: 6rem minmax(0, 1fr);
     gap: clamp(2rem, 5vw, 5rem);
-  }
-
-  /* Alternate the hang so the page reads as a spread, not a list. */
-  .row:nth-child(even) .media {
-    order: 2;
   }
 }
 
 @media (min-width: 1024px) {
   .card {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: 10rem minmax(0, 1fr);
   }
 }

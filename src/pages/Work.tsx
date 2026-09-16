@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Frame from "./../components/Frame";
+import { getImage } from "../data/images";
 import PageShell from "../components/PageShell";
 import { getArtist } from "../data/artists";
 import { FILTERS, WORKS, type Filter } from "../data/works";
@@ -16,7 +17,7 @@ export default function Work() {
     title: "Work",
     path: "/work",
     description:
-      "Selected tattoo work from GADELLA in Nyeri, Kenya — fine line, blackwork, realism, minimal and neo traditional pieces.",
+      "Selected tattoo work from GADELLAA ARTS TATTOO STUDIO in Nyeri, Kenya — illustrative, fine line, floral, lettering and minimal pieces.",
   });
 
   const shown = useMemo(
@@ -56,11 +57,13 @@ export default function Work() {
           <motion.ul className={styles.grid} layout={!reduced}>
             <AnimatePresence mode="popLayout">
               {shown.map((work, i) => {
-                const artist = getArtist(work.artistId);
+                const artist = work.artistId ? getArtist(work.artistId) : undefined;
+                // Landscape photos take two columns; nothing is cropped to fit the grid.
+                const wide = getImage(work.imageId).aspect > 1;
                 return (
                   <motion.li
                     key={work.id}
-                    className={[styles.card, i % 5 === 0 ? styles.cardWide : ""].filter(Boolean).join(" ")}
+                    className={[styles.card, wide ? styles.cardWide : ""].filter(Boolean).join(" ")}
                     layout={!reduced}
                     initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -70,15 +73,14 @@ export default function Work() {
                     <div className={styles.media}>
                       <Frame
                         image={work.imageId}
-                        ratio={i % 5 === 0 ? 1.35 : 0.8}
                         hoverZoom
                         still
                         sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                       />
                     </div>
                     <div className={styles.meta}>
-                      <h2 className={["label", styles.style].join(" ")}>{work.style}</h2>
-                      <p className={styles.artist}>{artist?.name ?? "GADELLA"}</p>
+                      <h2 className={["label", styles.style].join(" ")}>{work.title}</h2>
+                      <p className={styles.artist}>{artist ? `${work.style} · ${artist.name}` : work.style}</p>
                       <p className={styles.desc}>{work.description}</p>
                       <p className={styles.placement}>{work.placement}</p>
                     </div>

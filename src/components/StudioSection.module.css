@@ -18,24 +18,11 @@
   max-width: 44ch;
 }
 
-/* ---- frames ------------------------------------------------------------ */
-
-.frames {
-  display: grid;
-  gap: clamp(1.25rem, 2.5vw, 2rem);
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.caption {
-  margin-top: 0.9rem;
-}
-
 /* ---- principles -------------------------------------------------------- */
 
 .principles {
   display: grid;
   gap: 0;
-  margin-top: clamp(3.5rem, 8vw, 6.5rem);
   grid-template-columns: minmax(0, 1fr);
   border-top: 1px solid var(--line);
 }
@@ -74,11 +61,6 @@
 /* ---- breakpoints ------------------------------------------------------- */
 
 @media (min-width: 768px) {
-  .frames {
-    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
-    align-items: start;
-  }
-
   .principles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: clamp(2rem, 5vw, 4rem);

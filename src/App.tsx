@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 
 // Only the home page is in the first bundle; the rest arrive on navigation.
 const Work = lazy(() => import("./pages/Work"));
+const Prices = lazy(() => import("./pages/Prices"));
 const Artists = lazy(() => import("./pages/Artists"));
 const Studio = lazy(() => import("./pages/Studio"));
 const Booking = lazy(() => import("./pages/Booking"));
@@ -33,6 +34,7 @@ export default function App() {
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
               <Route path="/work" element={<Work />} />
+              <Route path="/prices" element={<Prices />} />
               <Route path="/artists" element={<Artists />} />
               <Route path="/studio" element={<Studio />} />
               <Route path="/booking" element={<Booking />} />

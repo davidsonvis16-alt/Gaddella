@@ -8,20 +8,10 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-/* The photograph bleeds to the left edge of the viewport — no gutter. */
-.media {
-  position: relative;
-  background: var(--black);
-}
-
-.media > figure {
-  height: 100%;
-}
-
 .content {
   display: grid;
   gap: clamp(2.5rem, 5vw, 4.5rem);
-  padding: var(--section-y) var(--gutter);
+  padding-block: var(--section-y);
   align-content: center;
 }
 
@@ -91,28 +81,10 @@
 
 /* ---- breakpoints ------------------------------------------------------- */
 
-@media (max-width: 1023px) {
-  .media > figure {
-    aspect-ratio: 16 / 11;
-  }
-}
-
 @media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: 38% minmax(0, 1fr);
-    align-items: stretch;
-  }
-
-  .media > figure {
-    position: absolute;
-    inset: 0;
-    aspect-ratio: auto;
-  }
-
   .content {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: clamp(3rem, 6vw, 6rem);
-    padding-inline: clamp(2.5rem, 5vw, 5rem) var(--gutter);
   }
 }
 

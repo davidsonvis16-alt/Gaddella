@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { getImage, resolveSrc, type ImageId } from "../data/images";
+import { getImage, type ImageId } from "../data/images";
 import { IN_VIEW, imageReveal } from "../lib/motion";
 import styles from "./Frame.module.css";
 
@@ -24,8 +24,8 @@ type Props = {
  * The only way an image reaches the page.
  *
  * Reserves its aspect ratio up front so nothing shifts, lazy-loads below the
- * fold, reveals once on entry, and falls back to the slot's placeholder plate
- * if the studio's own file ever fails to load.
+ * fold, reveals once on entry, and leaves the dark frame showing if a
+ * photograph ever fails to load rather than a broken-image icon.
  */
 export default function Frame({
   image,
@@ -40,9 +40,6 @@ export default function Frame({
   const reduced = useReducedMotion() ?? false;
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
-
-  // If the studio's photograph 404s we show the plate rather than a broken frame.
-  const src = failed ? slot.plate : resolveSrc(slot);
   const aspect = ratio ?? slot.aspect;
 
   const Wrapper = still || priority ? "div" : motion.div;
@@ -63,8 +60,8 @@ export default function Frame({
     >
       <Wrapper className={styles.inner} {...revealProps}>
         <img
-          src={src}
-          srcSet={failed ? undefined : slot.srcSet}
+          src={slot.src}
+          srcSet={slot.srcSet}
           sizes={slot.srcSet ? (slot.sizes ?? sizes) : undefined}
           alt={slot.alt}
           width={1600}
@@ -78,7 +75,7 @@ export default function Frame({
             setLoaded(true);
           }}
           style={{ objectPosition: slot.focal ?? "50% 50%" }}
-          className={loaded ? styles.ready : styles.loading}
+          className={loaded && !failed ? styles.ready : styles.loading}
         />
       </Wrapper>
       <span aria-hidden="true" className={styles.tone} />

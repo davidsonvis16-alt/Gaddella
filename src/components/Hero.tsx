@@ -3,6 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import Frame from "./Frame";
 import ArrowLink from "./ArrowLink";
 import DisplayLines from "./DisplayLines";
+import { PLACEMENTS } from "../data/images";
 import { SITE } from "../data/site";
 import { useMediaQuery } from "../lib/hooks";
 import { EASE } from "../lib/motion";
@@ -21,7 +22,7 @@ export default function Hero() {
   return (
     <section ref={ref} className={[styles.hero, "theme-dark"].join(" ")} aria-label="Introduction">
       <motion.div className={styles.media} style={{ y }}>
-        <Frame image={isPhone ? "heroPortrait" : "hero"} ratio={isPhone ? 0.62 : 1.5} priority still sizes="100vw" />
+        <Frame image={isPhone ? PLACEMENTS.heroPortrait : PLACEMENTS.hero} ratio={isPhone ? 0.62 : 1.5} priority still sizes="100vw" />
       </motion.div>
 
       <div className={styles.veil} aria-hidden="true" />
@@ -38,7 +39,7 @@ export default function Hero() {
           <span className={styles.eyebrowBreak}>{SITE.city}</span>
         </motion.p>
 
-        <DisplayLines lines={[SITE.name]} as="h1" className={styles.wordmark} immediate delay={0.2} />
+        <DisplayLines lines={[...SITE.wordmark]} as="h1" className={styles.wordmark} immediate delay={0.2} />
 
         <motion.p
           className={[styles.tagline, "label"].join(" ")}

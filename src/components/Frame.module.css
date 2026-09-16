@@ -16,8 +16,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* The whole site is near-monochrome; colour photography is graded into it. */
-  filter: grayscale(1) contrast(1.04) brightness(0.98);
   transition: opacity 700ms var(--ease-out), transform 1200ms var(--ease-out);
 }
 

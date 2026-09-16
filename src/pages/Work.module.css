@@ -101,7 +101,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  /* One wide plate per run breaks the grid into an exhibition hang. */
+  /* Landscape photographs span two columns. */
   .cardWide {
     grid-column: span 2;
   }
