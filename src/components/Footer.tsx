@@ -21,6 +21,11 @@ export default function Footer() {
 
         <nav className={styles.links} aria-label="Footer">
           <ul className={styles.list}>
+            <li>
+              <Link to="/" className={styles.link}>
+                Home
+              </Link>
+            </li>
             {SITE.social.map((s) => (
               <li key={s.label}>
                 <a href={s.href} target="_blank" rel="noreferrer noopener" className={styles.link}>

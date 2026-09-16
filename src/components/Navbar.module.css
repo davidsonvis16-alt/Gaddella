@@ -8,6 +8,14 @@
   border-bottom: 1px solid transparent;
 }
 
+/* Above the full-screen menu while it's open, so the logo and close button stay tappable. */
+.barOpen {
+  z-index: calc(var(--z-menu) + 1);
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+
 .solid {
   background: rgba(10, 10, 11, 0.72);
   backdrop-filter: blur(14px) saturate(120%);
@@ -32,7 +40,20 @@
   text-transform: uppercase;
   line-height: 1;
   justify-self: start;
-  padding-block: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* A visible way back home on phones and tablets, shown on every page but home. */
+.home {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding-inline: 0.75rem;
+  color: var(--off-white);
+  white-space: nowrap;
 }
 
 .nav {
@@ -175,6 +196,10 @@
   padding-block: 0.08em;
 }
 
+.menuActive {
+  color: var(--grey);
+}
+
 .menuFoot {
   display: flex;
   flex-direction: column;
@@ -198,7 +223,12 @@
 
 @media (max-width: 1023px) {
   .inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: var(--s-2);
+  }
+
+  .home {
+    display: inline-flex;
   }
 
   .nav,
@@ -222,5 +252,18 @@
 
   .inner {
     grid-template-columns: 1fr auto 1fr;
+  }
+}
+
+/* Small phones: keep the wordmark, Home and the menu button on one line. */
+@media (max-width: 479px) {
+  .wordmark {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .home {
+    padding-inline: 0.5rem;
   }
 }

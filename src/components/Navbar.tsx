@@ -11,6 +11,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion() ?? false;
   const { pathname } = useLocation();
+  const atHome = pathname === "/";
+  // The full-screen menu leads with Home so there's always a way back.
+  const menuItems = [{ label: "Home", to: "/" }, ...SITE.nav];
 
   useScrollLock(open);
 
@@ -36,7 +39,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={[styles.bar, scrolled ? styles.solid : ""].filter(Boolean).join(" ")}>
+      <header className={[styles.bar, scrolled ? styles.solid : "", open ? styles.barOpen : ""].filter(Boolean).join(" ")}>
         <div className={styles.inner}>
           <Link to="/" className={styles.wordmark} aria-label={`${SITE.name} — home`}>
             {SITE.shortName}
@@ -60,6 +63,15 @@ export default function Navbar() {
           <p className={[styles.locale, "label"].join(" ")}>
             {SITE.city}, {SITE.country}
           </p>
+
+          {!atHome && !open && (
+            <Link to="/" className={[styles.home, "label"].join(" ")}>
+              <svg viewBox="0 0 24 10" width="18" height="8" aria-hidden="true" focusable="false">
+                <path d="M24 5H1M5 1L0.5 5 5 9" fill="none" stroke="currentColor" strokeWidth="1" />
+              </svg>
+              Home
+            </Link>
+          )}
 
           <button
             type="button"
@@ -89,7 +101,7 @@ export default function Navbar() {
           >
             <nav className={styles.menuInner} aria-label="Mobile">
               <ul className={styles.menuList}>
-                {SITE.nav.map((item, i) => (
+                {menuItems.map((item, i) => (
                   <li key={item.to} className={styles.menuMask}>
                     <motion.span
                       className={styles.menuLine}
@@ -102,7 +114,13 @@ export default function Navbar() {
                         delay: reduced ? 0 : 0.12 + i * 0.06,
                       }}
                     >
-                      <Link to={item.to} className={[styles.menuLink, "display"].join(" ")}>
+                      <Link
+                        to={item.to}
+                        className={[styles.menuLink, "display", pathname === item.to ? styles.menuActive : ""]
+                          .filter(Boolean)
+                          .join(" ")}
+                        aria-current={pathname === item.to ? "page" : undefined}
+                      >
                         {item.label}
                       </Link>
                     </motion.span>

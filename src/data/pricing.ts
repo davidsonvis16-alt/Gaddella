@@ -4,7 +4,14 @@
    Copied from the studio's printed tattoo and body piercing price lists.
    Prices are in Kenyan shillings.
    `from: true` means the figure is a starting price.
+
+   `imageId` shows an example photo beside a price, so people can see what
+   "mini" or "half sleeve" means. Anything without a photo yet shows a
+   "photo coming soon" placeholder — add the photo to data/images.ts and set
+   `imageId` on the item when it arrives.
    ========================================================================== */
+
+import type { ImageId } from "./images";
 
 export type PriceItem = {
   service: string;
@@ -12,6 +19,8 @@ export type PriceItem = {
   price?: number;
   from?: boolean;
   note?: string;
+  /** An example photo of this service. Omit to show the placeholder. */
+  imageId?: ImageId;
 };
 
 export type PriceGroup = {
@@ -25,7 +34,7 @@ export const TATTOO_PRICES: PriceGroup[] = [
     id: "mini",
     title: "Mini tattoos",
     items: [
-      { service: "Mini tattoo", price: 700 },
+      { service: "Mini tattoo", price: 700, imageId: "dragonWrist" },
       { service: "2 mini tattoos", price: 1200 },
     ],
   },
@@ -33,28 +42,28 @@ export const TATTOO_PRICES: PriceGroup[] = [
     id: "small",
     title: "Small tattoos",
     items: [
-      { service: "Small tattoo", price: 1500, from: true },
-      { service: "Custom small tattoo", price: 1800, from: true },
+      { service: "Small tattoo", price: 1500, from: true, imageId: "butterflyThigh" },
+      { service: "Custom small tattoo", price: 1800, from: true, imageId: "princeScriptChest" },
     ],
   },
   {
     id: "medium",
     title: "Medium tattoos",
     items: [
-      { service: "Medium tattoo", price: 2500, from: true },
-      { service: "A4 tattoo", price: 4000, from: true },
+      { service: "Medium tattoo", price: 2500, from: true, imageId: "crownedDollarArm" },
+      { service: "A4 tattoo", price: 4000, from: true, imageId: "compassForearm" },
     ],
   },
   {
     id: "large",
     title: "Large tattoos",
     items: [
-      { service: "Large tattoo", price: 5000, from: true },
+      { service: "Large tattoo", price: 5000, from: true, imageId: "tigerShoulder" },
       { service: "Half sleeve", price: 10000, from: true },
       { service: "Full sleeve", price: 20000, from: true },
-      { service: "Chest piece", price: 4500, from: true },
+      { service: "Chest piece", price: 4500, from: true, imageId: "pocketWatchChest" },
       { service: "Back piece", price: 6500, from: true },
-      { service: "Leg piece", price: 6500, from: true },
+      { service: "Leg piece", price: 6500, from: true, imageId: "sunMoonThigh" },
     ],
   },
   {
@@ -64,7 +73,7 @@ export const TATTOO_PRICES: PriceGroup[] = [
       { service: "Couple tattoos", price: 2000, from: true },
       { service: "Cover-up tattoos", price: 2000, from: true },
       { service: "Portrait tattoos", price: 8000, from: true },
-      { service: "Custom designs", note: "Priced on size and detail" },
+      { service: "Custom designs", note: "Priced on size and detail", imageId: "onePieceForearm" },
     ],
   },
 ];

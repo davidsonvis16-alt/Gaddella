@@ -1,4 +1,5 @@
 import ArrowLink from "../components/ArrowLink";
+import Frame from "../components/Frame";
 import PageShell from "../components/PageShell";
 import { Reveal, RevealGroup, RevealItem } from "../components/Reveal";
 import {
@@ -22,6 +23,15 @@ function PriceGroups({ groups }: { groups: PriceGroup[] }) {
           <dl className={styles.items}>
             {group.items.map((item) => (
               <div key={item.service} className={styles.item}>
+                <div className={styles.thumb}>
+                  {item.imageId ? (
+                    <Frame image={item.imageId} ratio={1} still sizes="96px" />
+                  ) : (
+                    <span className={styles.placeholder}>
+                      <span className={styles.placeholderText}>Photo coming soon</span>
+                    </span>
+                  )}
+                </div>
                 <dt className={styles.service}>{item.service}</dt>
                 <dd className={[styles.price, item.price === undefined ? styles.note : ""].join(" ")}>
                   {formatPrice(item)}

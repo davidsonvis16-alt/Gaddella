@@ -29,12 +29,39 @@
 }
 
 .item {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  align-items: center;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--line-soft);
+}
+
+/* ---- preview thumbnails ------------------------------------------------ */
+
+.thumb {
+  width: 4.5rem;
+  min-width: 0;
+}
+
+/* Stands in for a photo the studio hasn't sent yet — light, dashed, labelled. */
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px dashed var(--line);
+  background: var(--paper);
+  padding: 0.35rem;
+  text-align: center;
+}
+
+.placeholderText {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }
 
 .service {
