@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img" aria-label="Tattoo workstation">
+<defs>
+<linearGradient id="base" x1="0" y1="0" x2="0.4" y2="1">
+<stop offset="0" stop-color="#1c1d20"/><stop offset="0.5" stop-color="#08080a"/><stop offset="1" stop-color="#08080a"/>
+</linearGradient>
+<linearGradient id="mass" x1="0" y1="0" x2="0.9" y2="1">
+<stop offset="0" stop-color="#8e9095" stop-opacity="0.463"/>
+<stop offset="0.45" stop-color="#8e9095" stop-opacity="0.08"/>
+<stop offset="1" stop-color="#08080a" stop-opacity="0.75"/>
+</linearGradient>
+<radialGradient id="key" cx="0.606" cy="0.123" r="0.62">
+<stop offset="0" stop-color="#8e9095" stop-opacity="0.340"/>
+<stop offset="0.5" stop-color="#8e9095" stop-opacity="0.07"/>
+<stop offset="1" stop-color="#8e9095" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#e8e6e3" stop-opacity="0.22"/><stop offset="1" stop-color="#e8e6e3" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="bok"><stop offset="0" stop-color="#e8e6e3" stop-opacity="0.8"/><stop offset="1" stop-color="#e8e6e3" stop-opacity="0"/></radialGradient>
+<radialGradient id="vig" cx="0.5" cy="0.45" r="0.72">
+<stop offset="0.35" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.68"/>
+</radialGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="29" result="n"/>
+<feColorMatrix in="n" type="saturate" values="0"/>
+</filter>
+</defs>
+<rect width="1200" height="1500" fill="url(#base)"/>
+<circle cx="159" cy="442" r="156" fill="url(#bok)" opacity="0.058"/><circle cx="481" cy="720" r="157" fill="url(#bok)" opacity="0.087"/><circle cx="969" cy="698" r="144" fill="url(#bok)" opacity="0.108"/><circle cx="583" cy="1342" r="103" fill="url(#bok)" opacity="0.102"/><circle cx="641" cy="1280" r="105" fill="url(#bok)" opacity="0.099"/><circle cx="996" cy="718" r="128" fill="url(#bok)" opacity="0.057"/>
+<path d="M-120 30 L504 -75 L1032 1575 L360 1620 Z"
+fill="url(#shaft)" opacity="0.303" filter="url(#soft)"/>
+<g transform="rotate(32.8 492 935)"><ellipse cx="492" cy="935" rx="685" ry="839" fill="url(#mass)" opacity="0.85" filter="url(#soft)"/></g><g transform="rotate(-11.8 359 799)"><ellipse cx="359" cy="799" rx="470" ry="349" fill="url(#mass)" opacity="0.50" filter="url(#soft)"/></g>
+<circle cx="378" cy="493" r="425" fill="none" stroke="#e8e6e3"
+stroke-opacity="0.265" stroke-width="14.4"
+stroke-dasharray="638 1700" filter="url(#soft)"/>
+<rect width="1200" height="1500" fill="url(#key)"/>
+<rect width="1200" height="1500" fill="url(#vig)"/>
+<rect width="1200" height="1500" filter="url(#grain)" opacity="0.2" style="mix-blend-mode:overlay"/>
+<rect x="0.5" y="0.5" width="1199" height="1499" fill="none" stroke="#ffffff" stroke-opacity="0.1"/>
+<g fill="#ffffff" fill-opacity="0.42" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="29" letter-spacing="5.22">
+<text x="54" y="83">TATTOO WORKSTATION</text>
+<text x="54" y="1446">GADELLA · IMAGE SLOT</text>
+<text x="1146" y="1446" text-anchor="end">ST-02</text>
+</g>
+<g stroke="#ffffff" stroke-opacity="0.2" stroke-width="1.74">
+<line x1="571" y1="750" x2="629" y2="750"/>
+<line x1="600" y1="721" x2="600" y2="779"/>
+</g>
+</svg>

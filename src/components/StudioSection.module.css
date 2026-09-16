@@ -1,0 +1,111 @@
+.section {
+  border-top: 1px solid var(--line-soft);
+}
+
+.head {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  margin-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
+.heading {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  max-width: 14ch;
+}
+
+.body {
+  max-width: 44ch;
+}
+
+/* ---- frames ------------------------------------------------------------ */
+
+.frames {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.caption {
+  margin-top: 0.9rem;
+}
+
+/* ---- principles -------------------------------------------------------- */
+
+.principles {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(3.5rem, 8vw, 6.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.principle {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.principleNum {
+  color: var(--fg-faint);
+}
+
+.principleTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  letter-spacing: -0.01em;
+  line-height: 1.16;
+  color: var(--fg);
+}
+
+.principleBody {
+  font-size: var(--fs-small);
+  line-height: 1.7;
+  color: var(--fg-dim);
+  max-width: 34ch;
+}
+
+.foot {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ---- breakpoints ------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .frames {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .head {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+
+  .head > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .principles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .principle {
+    padding-right: clamp(1rem, 2vw, 2rem);
+    border-bottom: 0;
+  }
+
+  .principle + .principle {
+    border-left: 1px solid var(--line-soft);
+    padding-left: clamp(1.25rem, 2.5vw, 2.25rem);
+  }
+}

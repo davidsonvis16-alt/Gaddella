@@ -1,0 +1,111 @@
+/* ==========================================================================
+   GADELLA — design tokens
+   Near-monochrome. Warm off-white against true charcoal. Nothing else.
+   ========================================================================== */
+
+:root {
+  /* ---- colour ---------------------------------------------------------- */
+  --black: #0a0a0b;
+  --ink: #101011;
+  --charcoal: #171718;
+  --graphite: #232325;
+  --grey: #6e6e71;
+  --grey-light: #9c9c9f;
+  --muted: #b4b2ae;
+  --off-white: #f2efea;
+  --paper: #e9e5de;
+  --white: #ffffff;
+
+  /* hairlines — the only "decoration" the system allows */
+  --border-dark: rgba(255, 255, 255, 0.14);
+  --border-dark-soft: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(10, 10, 11, 0.14);
+  --border-light-soft: rgba(10, 10, 11, 0.07);
+
+  --overlay-hero: linear-gradient(
+    100deg,
+    rgba(8, 8, 9, 0.9) 0%,
+    rgba(8, 8, 9, 0.66) 34%,
+    rgba(8, 8, 9, 0.22) 62%,
+    rgba(8, 8, 9, 0.5) 100%
+  );
+
+  /* ---- type ------------------------------------------------------------ */
+  --font-display: "Instrument Serif", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* fluid display sizes — min / preferred / max, all viewport-aware */
+  --fs-mega: clamp(3.75rem, 15.5vw, 15rem);
+  --fs-display: clamp(2.5rem, 7.2vw, 6.25rem);
+  --fs-h1: clamp(2.1rem, 5.6vw, 4.6rem);
+  --fs-h2: clamp(1.75rem, 4.2vw, 3.4rem);
+  --fs-h3: clamp(1.35rem, 2.4vw, 2rem);
+  --fs-body-lg: clamp(0.95rem, 1.15vw, 1.0625rem);
+  --fs-body: 0.9375rem;
+  --fs-small: 0.8125rem;
+  --fs-label: 0.6875rem;
+  --fs-micro: 0.625rem;
+
+  --lh-display: 0.92;
+  --lh-tight: 1.06;
+  --lh-body: 1.62;
+
+  --ls-mega: -0.035em;
+  --ls-display: -0.02em;
+  --ls-label: 0.2em;
+  --ls-nav: 0.14em;
+
+  /* ---- space ----------------------------------------------------------- */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+  --s-11: 11rem;
+
+  --gutter: clamp(1.25rem, 4.5vw, 4.5rem);
+  --section-y: clamp(4.5rem, 11vh, 10rem);
+  --max-w: 1680px;
+
+  /* ---- motion ---------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 220ms;
+  --dur: 420ms;
+  --dur-slow: 780ms;
+
+  --nav-h: 76px;
+  --z-nav: 100;
+  --z-menu: 200;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 62px;
+  }
+}
+
+/* Sections opt into a palette rather than restyling every child. */
+.theme-dark {
+  --bg: var(--black);
+  --fg: var(--off-white);
+  --fg-dim: var(--grey-light);
+  --fg-faint: var(--grey);
+  --line: var(--border-dark);
+  --line-soft: var(--border-dark-soft);
+}
+
+.theme-light {
+  --bg: var(--off-white);
+  --fg: var(--ink);
+  --fg-dim: #5a5a5d;
+  --fg-faint: var(--grey);
+  --line: var(--border-light);
+  --line-soft: var(--border-light-soft);
+}

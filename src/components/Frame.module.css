@@ -1,0 +1,54 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--ratio, 1);
+  background: var(--graphite);
+  isolation: isolate;
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The whole site is near-monochrome; colour photography is graded into it. */
+  filter: grayscale(1) contrast(1.04) brightness(0.98);
+  transition: opacity 700ms var(--ease-out), transform 1200ms var(--ease-out);
+}
+
+.loading {
+  opacity: 0;
+}
+
+.ready {
+  opacity: 1;
+}
+
+/* A hairline of shadow at the edges keeps images from floating off the page. */
+.tone {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--line-soft, rgba(255, 255, 255, 0.06));
+}
+
+.zoom:hover .inner img,
+.zoom:focus-within .inner img {
+  transform: scale(1.045);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner img {
+    transition: opacity 200ms linear;
+  }
+
+  .zoom:hover .inner img,
+  .zoom:focus-within .inner img {
+    transform: none;
+  }
+}

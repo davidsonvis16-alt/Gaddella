@@ -1,0 +1,66 @@
+.section {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.copy {
+  max-width: 34rem;
+}
+
+.eyebrow {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.heading {
+  font-size: var(--fs-display);
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.body {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.cta {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.deck {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .deck {
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  .copy {
+    position: sticky;
+    top: calc(var(--nav-h) + 4rem);
+  }
+
+  .deck {
+    max-width: 34rem;
+    margin-inline: 0 auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .deck {
+    max-width: 38rem;
+  }
+}

@@ -1,0 +1,16 @@
+.lines {
+  display: block;
+}
+
+/* One mask per line. The extra padding stops descenders being clipped. */
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.line {
+  display: block;
+  will-change: transform;
+}

@@ -1,0 +1,15 @@
+.section {
+  border-top: 1px solid var(--line-soft);
+  min-height: 34vh;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-6);
+}
+
+.actions > :first-child {
+  min-width: 260px;
+}

@@ -1,0 +1,229 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  width: 100%;
+}
+
+/* Room above and to the right for the rotated cards underneath the top one. */
+.stage {
+  position: relative;
+  padding: 3.5rem 3rem 0 0;
+  touch-action: pan-y;
+}
+
+.stage:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 12px;
+}
+
+.deck {
+  position: relative;
+  width: 100%;
+  /* Reserve the height of one card plus its caption so nothing jumps. */
+  aspect-ratio: 0.78;
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 90%;
+  will-change: transform;
+}
+
+.sheet {
+  cursor: grab;
+  will-change: transform;
+}
+
+.sheet:active {
+  cursor: grabbing;
+}
+
+.face {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  /* The photograph must not be dragged out of the page by the browser. */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.face img {
+  pointer-events: none;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 1.1rem);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.card[aria-hidden="true"] .caption {
+  opacity: 0;
+}
+
+.captionStyle {
+  color: var(--fg);
+}
+
+.captionMeta {
+  font-size: var(--fs-small);
+  color: var(--fg-faint);
+  text-align: right;
+}
+
+/* ---- controls ---------------------------------------------------------- */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-top: 3.25rem;
+  padding-top: var(--s-4);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.step {
+  width: 52px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--fg-dim);
+  transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.step:first-child {
+  margin-right: -1px;
+}
+
+.step:hover,
+.step:focus-visible {
+  color: var(--bg);
+  background: var(--fg);
+  border-color: var(--fg);
+}
+
+.hint {
+  color: var(--fg-faint);
+  text-align: right;
+}
+
+/* ---- index ------------------------------------------------------------- */
+
+.index {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.index li + li .indexItem {
+  border-left: 1px solid var(--line-soft);
+}
+
+.indexItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+  min-height: 60px;
+  padding: 0.9rem 0.75rem;
+  text-align: left;
+  color: var(--fg-faint);
+  transition: color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+}
+
+.indexItem:hover,
+.indexItem:focus-visible {
+  color: var(--fg);
+}
+
+.indexActive {
+  color: var(--fg);
+}
+
+.indexStyle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+
+.indexNum {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.1em;
+  color: var(--fg-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* A drawn rule marks the active entry, matching the reference's caption row. */
+.indexItem::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.indexActive::before {
+  transform: scaleX(1);
+}
+
+/* ---- breakpoints ------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .stage {
+    padding: 2.5rem 1.75rem 0 0;
+  }
+
+  .controls {
+    margin-top: 3rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s-4);
+  }
+
+  .buttons {
+    justify-content: stretch;
+  }
+
+  .step {
+    flex: 1;
+  }
+
+  .hint {
+    text-align: left;
+  }
+
+  .index {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .index li:nth-child(odd) .indexItem {
+    border-left: 0;
+  }
+
+  .index li:nth-child(n + 3) .indexItem {
+    border-top: 1px solid var(--line-soft);
+  }
+}

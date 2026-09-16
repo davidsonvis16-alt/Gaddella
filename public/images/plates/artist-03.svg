@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img" aria-label="Artist portrait 03">
+<defs>
+<linearGradient id="base" x1="0" y1="0" x2="0.4" y2="1">
+<stop offset="0" stop-color="#2a2422"/><stop offset="0.5" stop-color="#0f0c0b"/><stop offset="1" stop-color="#0f0c0b"/>
+</linearGradient>
+<linearGradient id="mass" x1="0" y1="0" x2="0.9" y2="1">
+<stop offset="0" stop-color="#a1948b" stop-opacity="0.490"/>
+<stop offset="0.45" stop-color="#a1948b" stop-opacity="0.08"/>
+<stop offset="1" stop-color="#0f0c0b" stop-opacity="0.75"/>
+</linearGradient>
+<radialGradient id="key" cx="0.476" cy="0.139" r="0.62">
+<stop offset="0" stop-color="#a1948b" stop-opacity="0.360"/>
+<stop offset="0.5" stop-color="#a1948b" stop-opacity="0.07"/>
+<stop offset="1" stop-color="#a1948b" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#f4ece4" stop-opacity="0.22"/><stop offset="1" stop-color="#f4ece4" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="bok"><stop offset="0" stop-color="#f4ece4" stop-opacity="0.8"/><stop offset="1" stop-color="#f4ece4" stop-opacity="0"/></radialGradient>
+<radialGradient id="vig" cx="0.5" cy="0.45" r="0.72">
+<stop offset="0.35" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.68"/>
+</radialGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="82" result="n"/>
+<feColorMatrix in="n" type="saturate" values="0"/>
+</filter>
+</defs>
+<rect width="1200" height="1500" fill="url(#base)"/>
+<circle cx="1100" cy="563" r="130" fill="url(#bok)" opacity="0.093"/><circle cx="581" cy="104" r="130" fill="url(#bok)" opacity="0.147"/><circle cx="742" cy="861" r="156" fill="url(#bok)" opacity="0.134"/><circle cx="14" cy="1010" r="123" fill="url(#bok)" opacity="0.115"/><circle cx="350" cy="761" r="166" fill="url(#bok)" opacity="0.095"/><circle cx="892" cy="1291" r="82" fill="url(#bok)" opacity="0.081"/>
+<path d="M-120 30 L504 -75 L1032 1575 L360 1620 Z"
+fill="url(#shaft)" opacity="0.330" filter="url(#soft)"/>
+<g transform="rotate(-26.3 427 1013)"><ellipse cx="427" cy="1013" rx="717" ry="646" fill="url(#mass)" opacity="0.85" filter="url(#soft)"/></g><g transform="rotate(-29.3 541 889)"><ellipse cx="541" cy="889" rx="354" ry="287" fill="url(#mass)" opacity="0.50" filter="url(#soft)"/></g>
+<circle cx="707" cy="749" r="547" fill="none" stroke="#f4ece4"
+stroke-opacity="0.280" stroke-width="14.4"
+stroke-dasharray="821 2188" filter="url(#soft)"/>
+<rect width="1200" height="1500" fill="url(#key)"/>
+<rect width="1200" height="1500" fill="url(#vig)"/>
+<rect width="1200" height="1500" filter="url(#grain)" opacity="0.2" style="mix-blend-mode:overlay"/>
+<rect x="0.5" y="0.5" width="1199" height="1499" fill="none" stroke="#ffffff" stroke-opacity="0.1"/>
+<g fill="#ffffff" fill-opacity="0.42" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="29" letter-spacing="5.22">
+<text x="54" y="83">ARTIST PORTRAIT 03</text>
+<text x="54" y="1446">GADELLA · IMAGE SLOT</text>
+<text x="1146" y="1446" text-anchor="end">AR-03</text>
+</g>
+<g stroke="#ffffff" stroke-opacity="0.2" stroke-width="1.74">
+<line x1="571" y1="750" x2="629" y2="750"/>
+<line x1="600" y1="721" x2="600" y2="779"/>
+</g>
+</svg>

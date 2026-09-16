@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Open graph">
+<defs>
+<linearGradient id="base" x1="0" y1="0" x2="0.4" y2="1">
+<stop offset="0" stop-color="#1c1d20"/><stop offset="0.5" stop-color="#08080a"/><stop offset="1" stop-color="#08080a"/>
+</linearGradient>
+<linearGradient id="mass" x1="0" y1="0" x2="0.9" y2="1">
+<stop offset="0" stop-color="#8e9095" stop-opacity="0.545"/>
+<stop offset="0.45" stop-color="#8e9095" stop-opacity="0.08"/>
+<stop offset="1" stop-color="#08080a" stop-opacity="0.75"/>
+</linearGradient>
+<radialGradient id="key" cx="0.361" cy="0.213" r="0.62">
+<stop offset="0" stop-color="#8e9095" stop-opacity="0.400"/>
+<stop offset="0.5" stop-color="#8e9095" stop-opacity="0.07"/>
+<stop offset="1" stop-color="#8e9095" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#e8e6e3" stop-opacity="0.22"/><stop offset="1" stop-color="#e8e6e3" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="bok"><stop offset="0" stop-color="#e8e6e3" stop-opacity="0.8"/><stop offset="1" stop-color="#e8e6e3" stop-opacity="0"/></radialGradient>
+<radialGradient id="vig" cx="0.5" cy="0.45" r="0.72">
+<stop offset="0.35" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.68"/>
+</radialGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="24"/></filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="94" result="n"/>
+<feColorMatrix in="n" type="saturate" values="0"/>
+</filter>
+</defs>
+<rect width="1200" height="630" fill="url(#base)"/>
+<circle cx="626" cy="350" r="67" fill="url(#bok)" opacity="0.087"/><circle cx="748" cy="161" r="84" fill="url(#bok)" opacity="0.102"/><circle cx="114" cy="603" r="82" fill="url(#bok)" opacity="0.093"/><circle cx="163" cy="271" r="60" fill="url(#bok)" opacity="0.070"/><circle cx="365" cy="166" r="50" fill="url(#bok)" opacity="0.131"/><circle cx="663" cy="575" r="78" fill="url(#bok)" opacity="0.103"/>
+<path d="M-120 13 L504 -32 L1032 662 L360 680 Z"
+fill="url(#shaft)" opacity="0.385" filter="url(#soft)"/>
+<g transform="rotate(9.3 410 439)"><ellipse cx="410" cy="439" rx="349" ry="463" fill="url(#mass)" opacity="0.85" filter="url(#soft)"/></g><g transform="rotate(-37.7 394 461)"><ellipse cx="394" cy="461" rx="179" ry="138" fill="url(#mass)" opacity="0.50" filter="url(#soft)"/></g>
+<circle cx="540" cy="193" r="242" fill="none" stroke="#e8e6e3"
+stroke-opacity="0.310" stroke-width="7.6"
+stroke-dasharray="363 968" filter="url(#soft)"/>
+<rect width="1200" height="630" fill="url(#key)"/>
+<rect width="1200" height="630" fill="url(#vig)"/>
+<rect width="1200" height="630" filter="url(#grain)" opacity="0.2" style="mix-blend-mode:overlay"/>
+<rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#ffffff" stroke-opacity="0.1"/>
+<g fill="#ffffff" fill-opacity="0.42" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" letter-spacing="2.70">
+<text x="28" y="43">OPEN GRAPH</text>
+<text x="28" y="602">GADELLA · IMAGE SLOT</text>
+<text x="1172" y="602" text-anchor="end">OG-01</text>
+</g>
+<g stroke="#ffffff" stroke-opacity="0.2" stroke-width="1">
+<line x1="585" y1="315" x2="615" y2="315"/>
+<line x1="600" y1="300" x2="600" y2="330"/>
+</g>
+</svg>

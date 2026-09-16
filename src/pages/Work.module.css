@@ -1,0 +1,108 @@
+.section {
+  border-top: 1px solid var(--line-soft);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.filter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 1.1rem clamp(0.9rem, 2vw, 1.5rem);
+  min-height: 52px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+}
+
+.filter:first-child {
+  padding-left: 0;
+}
+
+.filter:hover,
+.filter:focus-visible {
+  color: var(--fg);
+}
+
+.filterActive {
+  color: var(--fg);
+}
+
+.count {
+  font-size: var(--fs-micro);
+  color: var(--fg-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- exhibition grid --------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 2.5vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.card {
+  min-width: 0;
+}
+
+.media {
+  margin-bottom: 1.1rem;
+}
+
+.meta {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.style {
+  color: var(--fg);
+}
+
+.artist {
+  font-size: var(--fs-small);
+  color: var(--fg-dim);
+}
+
+.desc {
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--fg-faint);
+  max-width: 38ch;
+}
+
+.placement {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-top: 0.2rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* One wide plate per run breaks the grid into an exhibition hang. */
+  .cardWide {
+    grid-column: span 2;
+  }
+}
